@@ -30,6 +30,7 @@
             justify-content: center;
             gap: 20px;
             margin-bottom: 20px;
+            position: relative;
         }
 
         .gifImage {
@@ -71,18 +72,23 @@
             transition: all 0.3s ease;
         }
 
+        #gifYes {
+            display: none;
+            position: relative;
+        }
+
     </style>
 </head>
 <body>
 
     <div id="gifContainer">
         <img id="gifQuestion" class="gifImage" src="294d93123bae16823d7eef3c70ee0c31.gif" alt="Cute animation">
+        <img id="gifYes" class="gifImage" src="b33c68f2a35c6cfadc9b3b8a7f7450d5.gif" alt="Cute Bunny Blushing" style="display: none;">
         <h1 id="questionText">Will you be my Valentine? 💕</h1>
         <div id="buttons">
             <button id="yesButton" onclick="sayYes()">Yes! 💖</button>
             <button id="noButton" onclick="changeNo()">No 😢</button>
         </div>
-        <img id="gifYes" class="gifImage" src="b33c68f2a35c6cfadc9b3b8a7f7450d5.gif" alt="Cute Bunny Blushing" style="display: none;">
     </div>
 
     <audio id="valentineMusic" loop>
@@ -131,8 +137,7 @@
             questionText.innerHTML = "TYSM ::))))))))), I love you pookie, Levina!";
             document.getElementById("buttons").style.display = "none"; // Hide buttons
             gifQuestion.style.display = "none"; // Hide first GIF
-            gifYes.style.display = "block"; // Show second GIF in the same spot
-            music.play();
+            gifYes.style.display = "block"; // Show second GIF properly
         }
     </script>
 </body>

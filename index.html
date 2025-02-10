@@ -62,22 +62,16 @@
 </head>
 <body>
 
-    <img id="gifQuestion" src="294d93123bae16823d7eef3c70ee0c31.gif" alt="Cute Cat Holding Flower">
-    
+    <img src="294d93123bae16823d7eef3c70ee0c31.gif" alt="Cute animation">
     <h1 id="questionText">Will you be my Valentine? 💕</h1>
-
     <div id="buttons">
         <button id="yesButton" onclick="sayYes()">Yes! 💖</button>
         <button id="noButton" onclick="changeNo()">No 😢</button>
     </div>
-
-    <img id="gifYes" src="b33c68f2a35c6cfadc9b3b8a7f7450d5.gif" alt="Cute Bunny Blushing">
-
-    <audio id="valentineMusic" autoplay loop>
+    <img src="b33c68f2a35c6cfadc9b3b8a7f7450d5.gif" alt="Another animation">
+    <audio id="valentineMusic" loop>
         <source src="blue.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
     </audio>
-
     <script>
         let noResponses = [
             "Are you sure huzz? 🥺",
@@ -94,9 +88,11 @@
         let yesButton = document.getElementById("yesButton");
         let noButton = document.getElementById("noButton");
         let questionText = document.getElementById("questionText");
-        let gifQuestion = document.getElementById("gifQuestion");
-        let gifYes = document.getElementById("gifYes");
         let music = document.getElementById("valentineMusic");
+
+        document.addEventListener("DOMContentLoaded", () => {
+            music.play().catch(error => console.log("Autoplay blocked:", error));
+        });
 
         function changeNo() {
             if (index < noResponses.length) {
@@ -113,13 +109,10 @@
         }
 
         function sayYes() {
-            questionText.innerText = "Yay! 🥰💖 I can't wait when we met together, Levina!";
-            gifQuestion.style.display = "none";
-            gifYes.style.display = "block"; // Show the bunny GIF
+            questionText.innerText = "Yay! 🥰💖 I can't wait when we meet together, Levina!";
             document.getElementById("buttons").style.display = "none"; // Hide buttons
             music.play();
         }
     </script>
-
 </body>
 </html>

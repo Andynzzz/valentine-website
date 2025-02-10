@@ -23,13 +23,27 @@
             margin-top: 20px;
         }
 
-        #gifQuestion {
-            width: 200px;
+        #gifContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            position: relative;
         }
 
-        #gifYes {
-            width: 200px;
-            display: none; /* Hidden until she says "Yes" */
+        .gifImage {
+            width: 250px;
+            border-radius: 10px;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #questionText {
+            font-size: 28px;
+            margin: 10px 0;
         }
 
         #buttons {
@@ -58,26 +72,28 @@
             transition: all 0.3s ease;
         }
 
+        #gifYes {
+            display: none;
+        }
+
     </style>
 </head>
 <body>
 
-    <img id="gifQuestion" src="294d93123bae16823d7eef3c70ee0c31.gif" alt="Cute Cat Holding Flower">
-    
-    <h1 id="questionText">Will you be my Valentine? 💕</h1>
-
-    <div id="buttons">
-        <button id="yesButton" onclick="sayYes()">Yes! 💖</button>
-        <button id="noButton" onclick="changeNo()">No 😢</button>
+    <div id="gifContainer">
+        <h1 id="questionText">Will you be my Valentine? 💕</h1>
+        <div id="buttons">
+            <button id="yesButton" onclick="sayYes()">Yes! 💖</button>
+            <button id="noButton" onclick="changeNo()">No 😢</button>
+        </div>
+        <img id="gifQuestion" class="gifImage" src="294d93123bae16823d7eef3c70ee0c31.gif" alt="Cute animation">
+        <img id="gifYes" class="gifImage" src="b33c68f2a35c6cfadc9b3b8a7f7450d5.gif" alt="Cute Bunny Blushing">
     </div>
 
-    <img id="gifYes" src="b33c68f2a35c6cfadc9b3b8a7f7450d5.gif" alt="Cute Bunny Blushing">
-
-    <audio id="valentineMusic" autoplay loop>
+    <audio id="valentineMusic" loop>
         <source src="blue.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
     </audio>
-
+    
     <script>
         let noResponses = [
             "Are you sure huzz? 🥺",
@@ -98,6 +114,12 @@
         let gifYes = document.getElementById("gifYes");
         let music = document.getElementById("valentineMusic");
 
+        gifYes.style.display = "none"; // Ensure the second GIF is hidden initially
+
+        window.addEventListener("load", () => {
+            music.play().catch(error => console.log("Autoplay blocked. User interaction required."));
+        });
+
         function changeNo() {
             if (index < noResponses.length) {
                 noButton.innerText = noResponses[index];
@@ -113,13 +135,11 @@
         }
 
         function sayYes() {
-            questionText.innerText = "Yay! 🥰💖 I can't wait when we met together, Levina!";
-            gifQuestion.style.display = "none";
-            gifYes.style.display = "block"; // Show the bunny GIF
+            questionText.innerHTML = "TYSM ::))))))))), I love you pookie, Levina!";
             document.getElementById("buttons").style.display = "none"; // Hide buttons
-            music.play();
+            gifQuestion.style.display = "none"; // Hide first GIF
+            gifYes.style.display = "block"; // Show second GIF properly in the same spot
         }
     </script>
-
 </body>
 </html>

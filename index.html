@@ -71,22 +71,18 @@
             transition: all 0.3s ease;
         }
 
-        #gifYes {
-            display: none;
-        }
-
     </style>
 </head>
 <body>
 
     <div id="gifContainer">
-        <img class="gifImage" src="294d93123bae16823d7eef3c70ee0c31.gif" alt="Cute animation">
+        <img id="gifQuestion" class="gifImage" src="294d93123bae16823d7eef3c70ee0c31.gif" alt="Cute animation">
         <h1 id="questionText">Will you be my Valentine? 💕</h1>
         <div id="buttons">
             <button id="yesButton" onclick="sayYes()">Yes! 💖</button>
             <button id="noButton" onclick="changeNo()">No 😢</button>
         </div>
-        <img id="gifYes" class="gifImage" src="b33c68f2a35c6cfadc9b3b8a7f7450d5.gif" alt="Cute Bunny Blushing">
+        <img id="gifYes" class="gifImage" src="b33c68f2a35c6cfadc9b3b8a7f7450d5.gif" alt="Cute Bunny Blushing" style="display: none;">
     </div>
 
     <audio id="valentineMusic" loop>
@@ -109,13 +105,12 @@
         let yesButton = document.getElementById("yesButton");
         let noButton = document.getElementById("noButton");
         let questionText = document.getElementById("questionText");
+        let gifQuestion = document.getElementById("gifQuestion");
         let gifYes = document.getElementById("gifYes");
         let music = document.getElementById("valentineMusic");
 
-        gifYes.style.display = "none"; // Ensure the second GIF is hidden initially
-
-        document.addEventListener("DOMContentLoaded", () => {
-            music.play().catch(error => console.log("Autoplay blocked:", error));
+        window.addEventListener("load", () => {
+            music.play().catch(error => console.log("Autoplay blocked. User interaction required."));
         });
 
         function changeNo() {
@@ -133,9 +128,10 @@
         }
 
         function sayYes() {
-            questionText.innerHTML = "Yay! 🥰💖 I can't wait when we meet together, Levina!";
+            questionText.innerHTML = "TYSM ::))))))))), I love you pookie, Levina!";
             document.getElementById("buttons").style.display = "none"; // Hide buttons
-            gifYes.style.display = "block"; // Show the second GIF when Yes is clicked
+            gifQuestion.style.display = "none"; // Hide first GIF
+            gifYes.style.display = "block"; // Show second GIF in the same spot
             music.play();
         }
     </script>

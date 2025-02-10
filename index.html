@@ -90,7 +90,7 @@
         <img id="gifYes" class="gifImage" src="b33c68f2a35c6cfadc9b3b8a7f7450d5.gif" alt="Cute Bunny Blushing">
     </div>
 
-    <audio id="valentineMusic" loop>
+    <audio id="valentineMusic" autoplay loop>
         <source src="blue.mp3" type="audio/mpeg">
     </audio>
     
@@ -115,10 +115,6 @@
         let music = document.getElementById("valentineMusic");
 
         gifYes.style.display = "none"; // Ensure the second GIF is hidden initially
-
-        window.addEventListener("load", () => {
-            music.play().catch(error => console.log("Autoplay blocked. User interaction required."));
-        });
 
         function changeNo() {
             if (index < noResponses.length) {
